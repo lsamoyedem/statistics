@@ -229,10 +229,10 @@ public class Estatistica extends javax.swing.JFrame {
         jLabel11.setText("Total");
 
         quantidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        quantidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        quantidade.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         quantidade.setText("0");
 
-        fiTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fiTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         fiTotal.setText("0");
 
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -255,15 +255,15 @@ public class Estatistica extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(158, 158, 158)
                 .addComponent(jLabel11)
-                .addGap(81, 81, 81)
+                .addGap(107, 107, 107)
                 .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+                .addGap(100, 100, 100)
                 .addComponent(fiTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -413,14 +413,14 @@ public class Estatistica extends javax.swing.JFrame {
             }
 
             Integer r = valoresInteiros.get(valoresInteiros.size() - 1) - valoresInteiros.get(0);
-            Double k = new BigDecimal(1 + 3.22 * Math.log10(valoresInteiros.size())).setScale(2, RoundingMode.HALF_EVEN).doubleValue();
-            Double hAux = r / k;
+            Integer k = new BigDecimal(1 + 3.22 * Math.log10(valoresInteiros.size())).setScale(0, RoundingMode.HALF_EVEN).intValue();
+            Double hAux = r / Double.valueOf(k.toString());
             Integer h = new BigDecimal(hAux).setScale(0, RoundingMode.HALF_UP).intValue();
 
             Integer maximo = valoresInteiros.get(valoresInteiros.size() - 1);
             Integer primeiro = valoresInteiros.get(0);
             List<DistribuicaoDeFrequencia> dfList = new ArrayList<>();
-            while (primeiro < maximo) {
+            while (primeiro <= maximo) {
                 DistribuicaoDeFrequencia df = new DistribuicaoDeFrequencia(primeiro, primeiro + h);
                 int count = 0;
                 for (Integer valor : valoresInteiros) {
@@ -443,6 +443,16 @@ public class Estatistica extends javax.swing.JFrame {
                 df.setFacr(ultimoFacR + df.getFiPorcent());
                 ultimoFacR = ultimoFacR + df.getFiPorcent();
             }
+            DistribuicaoDeFrequencia maiorFi = null;
+            if (fiPortcet != 100) {
+                for (DistribuicaoDeFrequencia df : dfList) {
+                    if (maiorFi == null || df.getFiPorcent() > maiorFi.getFiPorcent()) {
+                        maiorFi = df;
+                    }
+                }
+                maiorFi.setFiPorcent(maiorFi.getFiPorcent() + 0.01);
+                fiPortcet = 100.0;
+            }
             int index = 0;
             for (DistribuicaoDeFrequencia df : dfList) {
                 distFreqTable.setValueAt(df.getValor(), index, 0);
@@ -456,15 +466,17 @@ public class Estatistica extends javax.swing.JFrame {
             quantidade.setText(String.valueOf(valoresInteiros.size()));
             fiTotal.setText(String.valueOf(fiPortcet));
 
-            DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+            DefaultTableCellRenderer right = new DefaultTableCellRenderer();
+            DefaultTableCellRenderer left = new DefaultTableCellRenderer();
 
-            center.setHorizontalAlignment(SwingConstants.CENTER);
-            distFreqTable.getColumnModel().getColumn(0).setCellRenderer(center);
-            distFreqTable.getColumnModel().getColumn(1).setCellRenderer(center);
-            distFreqTable.getColumnModel().getColumn(2).setCellRenderer(center);
-            distFreqTable.getColumnModel().getColumn(3).setCellRenderer(center);
-            distFreqTable.getColumnModel().getColumn(4).setCellRenderer(center);
-            distFreqTable.getColumnModel().getColumn(5).setCellRenderer(center);
+            right.setHorizontalAlignment(SwingConstants.RIGHT);
+            left.setHorizontalAlignment(SwingConstants.LEFT);
+            distFreqTable.getColumnModel().getColumn(0).setCellRenderer(left);
+            distFreqTable.getColumnModel().getColumn(1).setCellRenderer(right);
+            distFreqTable.getColumnModel().getColumn(2).setCellRenderer(right);
+            distFreqTable.getColumnModel().getColumn(3).setCellRenderer(right);
+            distFreqTable.getColumnModel().getColumn(4).setCellRenderer(right);
+            distFreqTable.getColumnModel().getColumn(5).setCellRenderer(right);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

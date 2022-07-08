@@ -78,6 +78,6 @@ public class DistribuicaoDeFrequencia {
     }
 
     public String getValor() {
-        return inicio + " |-" + fim;
+        return inicio + " |- " + fim;
     }
 }
