@@ -1,15 +1,15 @@
 package br.una.estatistica;
 
-import br.una.estatistica.DistribuicaoDeFrequencia;
-import br.una.estatistica.EstatisticaDescritiva;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -69,8 +69,17 @@ public class Estatistica extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
         separador = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        quantidade = new javax.swing.JLabel();
+        fiTotal = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Estatística");
+        setIconImages(null);
 
         inputValores.setColumns(20);
         inputValores.setRows(5);
@@ -91,39 +100,44 @@ public class Estatistica extends javax.swing.JFrame {
 
         jLabel3.setText("Desvio padrão:");
 
+        media.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         media.setText("0");
+        media.setFocusable(false);
+        media.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
+        mediana.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         mediana.setText("0");
         mediana.setToolTipText("");
+        mediana.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
+        desvioPadrao.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         desvioPadrao.setText("0");
+        desvioPadrao.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
+        moda.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         moda.setText("0");
+        moda.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel4.setText("Variância:");
 
+        variancia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         variancia.setText("0");
+        variancia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel5.setText("Coeficiente de variação amostral:");
 
+        coeVariancia.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         coeVariancia.setText("0");
+        coeVariancia.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel6.setText("Média geométrica:");
 
+        mediaGeo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         mediaGeo.setText("0");
+        mediaGeo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         distFreqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -178,6 +192,7 @@ public class Estatistica extends javax.swing.JFrame {
         if (distFreqTable.getColumnModel().getColumnCount() > 0) {
             distFreqTable.getColumnModel().getColumn(0).setResizable(false);
             distFreqTable.getColumnModel().getColumn(1).setResizable(false);
+            distFreqTable.getColumnModel().getColumn(1).setCellRenderer(null);
             distFreqTable.getColumnModel().getColumn(2).setResizable(false);
             distFreqTable.getColumnModel().getColumn(3).setResizable(false);
             distFreqTable.getColumnModel().getColumn(4).setResizable(false);
@@ -210,6 +225,25 @@ public class Estatistica extends javax.swing.JFrame {
 
         separador.setText(",");
 
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel11.setText("Total");
+
+        quantidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        quantidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        quantidade.setText("0");
+
+        fiTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fiTotal.setText("0");
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("-");
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("-");
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("-");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,6 +252,20 @@ public class Estatistica extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(155, 155, 155))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(jLabel11)
+                .addGap(81, 81, 81)
+                .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(fiTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(124, 124, 124)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,15 +280,26 @@ public class Estatistica extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(coeVariancia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mediaGeo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(media, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mediana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(moda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(desvioPadrao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(variancia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(mediana, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(mediaGeo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                                        .addComponent(media, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(moda, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(variancia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                                .addComponent(desvioPadrao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(coeVariancia, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel7)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -252,13 +311,7 @@ public class Estatistica extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
                                     .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(110, 135, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(57, 135, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,8 +371,21 @@ public class Estatistica extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(quantidade)
+                    .addComponent(fiTotal)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("teste");
+        getAccessibleContext().setAccessibleDescription("teste");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -368,10 +434,12 @@ public class Estatistica extends javax.swing.JFrame {
             }
             Integer ultimo = 0;
             Double ultimoFacR = 0.0;
+            Double fiPortcet = 0.0;
             for (DistribuicaoDeFrequencia df : dfList) {
                 df.setFac(ultimo + df.getFi());
                 ultimo = ultimo + df.getFi();
                 df.setFiPorcent(df.getFi().doubleValue() / valoresInteiros.size() * 100.0);
+                fiPortcet += df.getFi().doubleValue() / valoresInteiros.size() * 100.0;
                 df.setFacr(ultimoFacR + df.getFiPorcent());
                 ultimoFacR = ultimoFacR + df.getFiPorcent();
             }
@@ -385,6 +453,18 @@ public class Estatistica extends javax.swing.JFrame {
                 distFreqTable.setValueAt(new BigDecimal(df.getFacr()).setScale(2, RoundingMode.HALF_EVEN).toString(), index, 5);
                 index++;
             }
+            quantidade.setText(String.valueOf(valoresInteiros.size()));
+            fiTotal.setText(String.valueOf(fiPortcet));
+
+            DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+
+            center.setHorizontalAlignment(SwingConstants.CENTER);
+            distFreqTable.getColumnModel().getColumn(0).setCellRenderer(center);
+            distFreqTable.getColumnModel().getColumn(1).setCellRenderer(center);
+            distFreqTable.getColumnModel().getColumn(2).setCellRenderer(center);
+            distFreqTable.getColumnModel().getColumn(3).setCellRenderer(center);
+            distFreqTable.getColumnModel().getColumn(4).setCellRenderer(center);
+            distFreqTable.getColumnModel().getColumn(5).setCellRenderer(center);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -416,10 +496,15 @@ public class Estatistica extends javax.swing.JFrame {
     private javax.swing.JLabel coeVariancia;
     private javax.swing.JLabel desvioPadrao;
     private javax.swing.JTable distFreqTable;
+    private javax.swing.JLabel fiTotal;
     private javax.swing.JTextArea inputValores;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -431,12 +516,14 @@ public class Estatistica extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel media;
     private javax.swing.JLabel mediaGeo;
     private javax.swing.JLabel mediana;
     private javax.swing.JLabel moda;
     private javax.swing.JLabel modaText;
+    private javax.swing.JLabel quantidade;
     private javax.swing.JTextField separador;
     private javax.swing.JLabel variancia;
     // End of variables declaration//GEN-END:variables
